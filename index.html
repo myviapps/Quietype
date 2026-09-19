@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quietype Legal</title>
+<meta name="description" content="Privacy Policy, Terms of Service and open-source licenses for the Quietype Android keyboard.">
+<style>
+  :root {
+    --bg: #f7f5fc; --surface: #ffffff; --ink: #1c1230; --muted: #6b6480;
+    --line: #e8e4f3; --accent: #6c4bf6; --accent-soft: #ece7ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #120b22; --surface: #1e1533; --ink: #f2eeff; --muted: #a79ec4;
+      --line: #2e2447; --accent: #8f76ff; --accent-soft: #2a2050;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 0 20px;
+    background: var(--bg); color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+  }
+  a { color: var(--accent); }
+  .page { max-width: 680px; margin: 0 auto; padding: 48px 0 64px; }
+  .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .brand .mark {
+    width: 44px; height: 44px; border-radius: 12px; background: #f7f5fc;
+    display: grid; place-items: center; border: 1px solid var(--line);
+  }
+  .brand h1 { margin: 0; font-size: 1.9rem; }
+  .lead { color: var(--muted); margin: 0 0 32px; }
+  .cards { display: grid; gap: 12px; }
+  .card {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 18px 20px;
+  }
+  .card:hover { border-color: var(--accent); }
+  .card h2 { margin: 0 0 4px; font-size: 1.1rem; color: var(--accent); }
+  .card p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+  .contact { margin-top: 32px; padding: 18px 20px; background: var(--accent-soft); border-radius: 14px; }
+  .contact p { margin: 0; }
+  footer { margin-top: 40px; color: var(--muted); font-size: 0.8rem; border-top: 1px solid var(--line); padding-top: 16px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="brand">
+    <span class="mark" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 30 30"><g fill="#1c1230"><rect x="2" y="5" width="6" height="5" rx="1.5"/><rect x="9" y="5" width="6" height="5" rx="1.5"/><rect x="16" y="5" width="6" height="5" rx="1.5"/><rect x="23" y="5" width="5" height="5" rx="1.5"/><rect x="2" y="12" width="6" height="5" rx="1.5"/><rect x="16" y="12" width="6" height="5" rx="1.5"/><rect x="23" y="12" width="5" height="5" rx="1.5"/><rect x="2" y="19" width="20" height="5" rx="1.5"/></g><rect x="9" y="12" width="6" height="5" rx="1.5" fill="#6c4bf6"/><rect x="23" y="19" width="5" height="5" rx="1.5" fill="#ff6b5b"/></svg>
+    </span>
+    <h1>Quietype</h1>
+  </div>
+  <p class="lead">Legal documents for the Quietype Android keyboard. Rewriting happens on your phone; your text is never uploaded.</p>
+
+  <div class="cards">
+    <a class="card" href="./privacy-policy.html">
+      <h2>Privacy Policy</h2>
+      <p>What Quietype never collects, what stays on your device, and what a subscription requires.</p>
+    </a>
+    <a class="card" href="./terms-of-service.html">
+      <h2>Terms of Service</h2>
+      <p>The rules for using the app, the subscription plan, and governing law.</p>
+    </a>
+    <a class="card" href="./open-source.html">
+      <h2>Open Source Licenses</h2>
+      <p>Credits and licenses for the software, models and artwork Quietype is built with.</p>
+    </a>
+  </div>
+
+  <div class="contact">
+    <p>Questions? Email <a href="mailto:vijaydmb@gmail.com">vijaydmb@gmail.com</a></p>
+  </div>
+
+  <footer>Quietype · v1.0 · 2026-09-16</footer>
+</div>
+</body>
+</html>
