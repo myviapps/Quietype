@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HumanRewrite Keyboard Prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="workspace">
+      <section class="phone" aria-label="HumanRewrite keyboard prototype">
+        <div class="statusbar">
+          <span>9:41</span>
+          <span>HumanRewrite</span>
+        </div>
+
+        <section class="conversation" aria-label="Message composer">
+          <div class="message incoming">Can you send the final update?</div>
+          <label for="composer" class="composer-label">Active text field</label>
+          <textarea id="composer" spellcheck="false">i dont want teh text to sound ai written</textarea>
+          <div id="notice" class="notice" role="status">Ready</div>
+        </section>
+
+        <section class="keyboard" aria-label="Keyboard">
+          <div class="toolbar">
+            <button data-action="rewrite">Rewrite</button>
+            <button data-action="mode" id="modeButton">Grammar Only</button>
+            <button data-panel="emojiMix">Emoji Mix</button>
+            <button data-panel="clipboard">Clipboard</button>
+            <button data-panel="templates">Templates</button>
+          </div>
+
+          <div class="suggestions">
+            <button data-action="rewrite">Fix grammar</button>
+            <button data-action="humanTone">Human tone</button>
+            <button data-action="professional">Professional</button>
+          </div>
+
+          <div id="panel" class="panel hidden"></div>
+          <div id="keys" class="keys"></div>
+        </section>
+      </section>
+
+      <aside class="control-room" aria-label="Prototype controls">
+        <h1>HumanRewrite Keyboard</h1>
+        <p>
+          A browser-buildable prototype for the Android keyboard idea: grammar rewrite,
+          power clipboard, templates, and a unique Emoji Mix composer.
+        </p>
+
+        <div class="control-grid">
+          <label class="switch">
+            <input id="subscriptionToggle" type="checkbox" checked />
+            <span>Subscription active</span>
+          </label>
+          <label class="switch">
+            <input id="cloudToggle" type="checkbox" />
+            <span>Allow cloud fallback</span>
+          </label>
+          <label class="switch">
+            <input id="numberRowToggle" type="checkbox" />
+            <span>Number row</span>
+          </label>
+          <label class="switch">
+            <input id="hapticsToggle" type="checkbox" checked />
+            <span>Haptic feel</span>
+          </label>
+          <label class="field">
+            <span>Local model</span>
+            <select id="localModelSelect">
+              <option value="SMOLLM2_360M">SmolLM2 360M</option>
+              <option value="QWEN3_06B">Qwen3 0.6B</option>
+              <option value="NONE">No local model</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="phase-card">
+          <h2>Build status</h2>
+          <ul>
+            <li>Runs by opening this HTML file.</li>
+            <li>No Android Studio, SDK, Play Console, or backend required.</li>
+            <li>Mirrors the Android app behavior for product testing.</li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quietype</string>
+    <string name="keyboard_name">Quietype Keyboard</string>
+    <string name="bubble_name">Quietype bubble</string>
+    <string name="bubble_description">Shows a small floating button that rewrites the text box you are typing in, in any app. Quietype reads the text of that box only when you tap Rewrite, replaces it with the corrected version, and never stores or sends it anywhere — rewriting runs entirely on your phone.</string>
+</resources>

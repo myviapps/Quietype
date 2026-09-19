@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quietype Terms</title>
+<meta name="description" content="The terms for using the Quietype keyboard app and its optional subscription.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root {
+    --bg: #f7f5fc;
+    --surface: #ffffff;
+    --ink: #1c1230;
+    --muted: #6b6480;
+    --line: #e8e4f3;
+    --accent: #6c4bf6;
+    --accent-soft: #ece7ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #120b22;
+      --surface: #1e1533;
+      --ink: #f2eeff;
+      --muted: #a79ec4;
+      --line: #2e2447;
+      --accent: #8f76ff;
+      --accent-soft: #2a2050;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #120b22;
+    --surface: #1e1533;
+    --ink: #f2eeff;
+    --muted: #a79ec4;
+    --line: #2e2447;
+    --accent: #8f76ff;
+    --accent-soft: #2a2050;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.65;
+    padding-inline: 20px;
+  }
+  h1, h2 {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  a { color: var(--accent); }
+
+  .page {
+    max-width: 680px;
+    margin-inline: auto;
+    padding-block: 40px 64px;
+  }
+
+  header.top {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  header.top h1 {
+    font-size: clamp(1.7rem, 4vw, 2.1rem);
+    font-weight: 600;
+    margin: 2px 0 0;
+  }
+  .meta { color: var(--muted); font-size: 0.85rem; }
+  .meta .mono { color: var(--muted); }
+
+  nav.toc {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 40px;
+  }
+  nav.toc .eyebrow { margin-bottom: 10px; display: block; }
+  nav.toc ol { margin: 0; padding-left: 1.3em; columns: 2; column-gap: 24px; }
+  nav.toc li { break-inside: avoid; margin-bottom: 6px; }
+  nav.toc a { text-decoration: none; color: var(--ink); }
+  nav.toc a:hover { color: var(--accent); }
+  @media (max-width: 480px) { nav.toc ol { columns: 1; } }
+
+  section { margin-bottom: 34px; scroll-margin-top: 16px; }
+  section h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  section h2 .num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  section p, section li { max-width: 62ch; }
+  section ul { padding-left: 1.2em; }
+  section li { margin-bottom: 6px; }
+
+  .plan-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 16px 0;
+  }
+  .plan-card .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .plan-card .row:last-child { border-bottom: none; }
+  .plan-card .row span:first-child { color: var(--muted); }
+  .plan-card .row span:last-child { font-weight: 600; }
+
+  .contact {
+    background: var(--accent-soft);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-top: 44px;
+  }
+  .contact h2 { margin-top: 0; }
+  .placeholder {
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  footer.bottom {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .back { display: inline-block; margin-bottom: 18px; font-size: 0.85rem; text-decoration: none; }
+  .back:hover { text-decoration: underline; }
+  footer.bottom .links { display: flex; gap: 14px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="./index.html">← All Quietype legal documents</a>
+  <header class="top">
+    <span class="eyebrow">Quietype · Terms of Service</span>
+    <h1>The short version: rewrite freely, cancel anytime.</h1>
+    <p class="meta">Effective <span class="mono">September 16, 2026</span> · Applies to the Quietype Android keyboard, com.humanrewrite.keyboard</p>
+  </header>
+
+  <nav class="toc" aria-label="Table of contents">
+    <span class="eyebrow">Contents</span>
+    <ol>
+      <li><a href="#acceptance">Accepting these terms</a></li>
+      <li><a href="#license">License to use the app</a></li>
+      <li><a href="#free">Free features</a></li>
+      <li><a href="#subscription">Subscription plan</a></li>
+      <li><a href="#conduct">Acceptable use</a></li>
+      <li><a href="#accuracy">Rewrite accuracy — no warranty</a></li>
+      <li><a href="#liability">Limitation of liability</a></li>
+      <li><a href="#termination">Termination</a></li>
+      <li><a href="#law">Governing law</a></li>
+      <li><a href="#changes">Changes to these terms</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section id="acceptance">
+    <h2><span class="num">01</span> Accepting these terms</h2>
+    <p>By installing or using Quietype, you agree to these terms and to the <a href="./privacy-policy.html">Privacy Policy</a>. If you don't agree, please don't use the app.</p>
+  </section>
+
+  <section id="license">
+    <h2><span class="num">02</span> License to use the app</h2>
+    <p>We grant you a personal, non-exclusive, non-transferable license to install and use Quietype on devices you own, for your own writing. You may not reverse-engineer, resell, or redistribute the app itself.</p>
+  </section>
+
+  <section id="free">
+    <h2><span class="num">03</span> Free features</h2>
+    <p>Basic typing always works, with or without a subscription — you're never locked out of your own keyboard. Number row, haptics, and key sounds are free for everyone.</p>
+  </section>
+
+  <section id="subscription">
+    <h2><span class="num">04</span> Subscription plan</h2>
+    <p>Rewrite, the power clipboard, and templates require an active subscription, purchased and managed entirely through Google Play.</p>
+    <div class="plan-card">
+      <div class="row"><span>Billing</span><span>Monthly, through Google Play</span></div>
+      <div class="row"><span>Renewal</span><span>Automatic, until you cancel</span></div>
+      <div class="row"><span>Cancel</span><span>Anytime, in Google Play → Subscriptions</span></div>
+      <div class="row"><span>Refunds</span><span>Per Google Play's refund policy</span></div>
+      <div class="row"><span>Offline access</span><span>Up to 24 hours since last verified</span></div>
+    </div>
+    <p>If your subscription lapses — including after the offline window above — paid features pause automatically until it's renewed. Your saved clips and templates aren't deleted; you just can't add to them until you resubscribe.</p>
+  </section>
+
+  <section id="conduct">
+    <h2><span class="num">05</span> Acceptable use</h2>
+    <p>Use Quietype for your own writing. Don't use it to generate or rewrite text intended to harass, defraud, or impersonate someone, and don't attempt to abuse, reverse-engineer, or overload the on-device model or our servers.</p>
+  </section>
+
+  <section id="accuracy">
+    <h2><span class="num">06</span> Rewrite accuracy — no warranty</h2>
+    <p>Quietype's on-device model does its best to fix grammar and tone, but it can make mistakes, miss errors, or occasionally change meaning it shouldn't. Always review rewritten text before sending it — especially for anything important. The app is provided "as is," without warranty of any kind, including accuracy or fitness for a particular purpose.</p>
+  </section>
+
+  <section id="liability">
+    <h2><span class="num">07</span> Limitation of liability</h2>
+    <p>To the fullest extent the law allows, we aren't liable for indirect, incidental, or consequential damages arising from your use of the app, including anything a rewritten message caused after you sent it. Our total liability for any claim is limited to the amount you paid us in the three months before the claim.</p>
+  </section>
+
+  <section id="termination">
+    <h2><span class="num">08</span> Termination</h2>
+    <p>You can stop using the app and uninstall it at any time. We may suspend or terminate access for violations of these terms, particularly the acceptable-use section above.</p>
+  </section>
+
+  <section id="law">
+    <h2><span class="num">09</span> Governing law</h2>
+    <p>The laws of India govern these terms, without regard to conflict-of-law rules, and the courts of India have exclusive jurisdiction over any dispute arising from them.</p>
+  </section>
+
+  <section id="changes">
+    <h2><span class="num">10</span> Changes to these terms</h2>
+    <p>We may update these terms as the app changes. We'll update the effective date above, and note material changes inside the app.</p>
+  </section>
+
+  <div class="contact" id="contact">
+    <h2><span class="num">11</span> Contact</h2>
+    <p>Questions about these terms: <span class="mono">vijaydmb@gmail.com</span></p>
+  </div>
+
+  <footer class="bottom">
+    <span class="links"><a href="./index.html">Home</a><a href="./privacy-policy.html">Privacy Policy</a><a href="./open-source.html">Open Source Licenses</a></span>
+    <span>Quietype Terms of Service</span>
+    <span class="mono">v1.0 · 2026-09-16</span>
+  </footer>
+</div>
+</body>
+</html>

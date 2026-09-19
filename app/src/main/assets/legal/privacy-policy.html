@@ -1,0 +1,287 @@
+<title>Quietype Privacy</title>
+<meta name="description" content="How the Quietype keyboard handles your data: what it never collects, what stays on your phone, and what a subscription requires.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root {
+    --bg: #f7f5fc;
+    --surface: #ffffff;
+    --ink: #1c1230;
+    --muted: #6b6480;
+    --line: #e8e4f3;
+    --accent: #6c4bf6;
+    --accent-soft: #ece7ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #120b22;
+      --surface: #1e1533;
+      --ink: #f2eeff;
+      --muted: #a79ec4;
+      --line: #2e2447;
+      --accent: #8f76ff;
+      --accent-soft: #2a2050;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #120b22;
+    --surface: #1e1533;
+    --ink: #f2eeff;
+    --muted: #a79ec4;
+    --line: #2e2447;
+    --accent: #8f76ff;
+    --accent-soft: #2a2050;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.65;
+    padding-inline: 20px;
+  }
+  h1, h2 {
+    font-family: "Fraunces", ui-serif, Georgia, serif;
+    text-wrap: balance;
+    color: var(--ink);
+  }
+  .mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  a { color: var(--accent); }
+
+  .page {
+    max-width: 680px;
+    margin-inline: auto;
+    padding-block: 40px 64px;
+  }
+
+  header.top {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 28px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  header.top h1 {
+    font-size: clamp(1.7rem, 4vw, 2.1rem);
+    font-weight: 600;
+    margin: 2px 0 0;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  .meta .mono { color: var(--muted); }
+
+  nav.toc {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 40px;
+  }
+  nav.toc .eyebrow { margin-bottom: 10px; display: block; }
+  nav.toc ol {
+    margin: 0;
+    padding-left: 1.3em;
+    columns: 2;
+    column-gap: 24px;
+  }
+  nav.toc li { break-inside: avoid; margin-bottom: 6px; }
+  nav.toc a { text-decoration: none; color: var(--ink); }
+  nav.toc a:hover { color: var(--accent); }
+  @media (max-width: 480px) {
+    nav.toc ol { columns: 1; }
+  }
+
+  section {
+    margin-bottom: 34px;
+    scroll-margin-top: 16px;
+  }
+  section h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  section h2 .num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.85rem;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  section p, section li { max-width: 62ch; }
+  section ul { padding-left: 1.2em; }
+  section li { margin-bottom: 6px; }
+
+  .grid-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin: 18px 0;
+  }
+  .fact {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .fact .label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .fact .value {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .contact {
+    background: var(--accent-soft);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-top: 44px;
+  }
+  .contact h2 { margin-top: 0; }
+  .placeholder {
+    background: color-mix(in srgb, var(--accent) 18%, transparent);
+    padding: 1px 6px;
+    border-radius: 4px;
+  }
+
+  footer.bottom {
+    margin-top: 48px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+</style>
+
+<div class="page">
+  <header class="top">
+    <span class="eyebrow">Quietype · Privacy Policy</span>
+    <h1>Your text stays on your phone.</h1>
+    <p class="meta">Effective <span class="mono">September 16, 2026</span> · Applies to the Quietype Android keyboard, com.humanrewrite.keyboard</p>
+  </header>
+
+  <div class="grid-facts">
+    <div class="fact"><span class="label">Rewriting happens</span><span class="value">On-device only</span></div>
+    <div class="fact"><span class="label">Accounts required</span><span class="value">None</span></div>
+    <div class="fact"><span class="label">Analytics / ads</span><span class="value">None</span></div>
+    <div class="fact"><span class="label">Your typed text</span><span class="value">Never uploaded</span></div>
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <span class="eyebrow">Contents</span>
+    <ol>
+      <li><a href="#rewriting">What happens to text you rewrite</a></li>
+      <li><a href="#clipboard">Clipboard &amp; templates</a></li>
+      <li><a href="#bubble">The floating bubble &amp; Accessibility permission</a></li>
+      <li><a href="#stickers">Emoji &amp; stickers</a></li>
+      <li><a href="#models">Downloading rewrite models</a></li>
+      <li><a href="#subscription">Subscriptions &amp; payment</a></li>
+      <li><a href="#retention">What's stored, and for how long</a></li>
+      <li><a href="#deletion">Account &amp; data deletion</a></li>
+      <li><a href="#sharing">Sharing with third parties</a></li>
+      <li><a href="#children">Children's privacy</a></li>
+      <li><a href="#changes">Changes to this policy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </nav>
+
+  <section id="rewriting">
+    <h2><span class="num">01</span> What happens to text you rewrite</h2>
+    <p>When you tap Rewrite — from the keyboard toolbar or the floating bubble — Quietype reads only the text in the field you're editing, right at that moment. That text is processed by a small language model running entirely on your phone. It is never uploaded, never logged, and never sent to us or anyone else.</p>
+    <p>A cloud-assisted rewrite option is planned for a future update. It will be off by default and will only ever run with your explicit, separate consent at the time — this policy will be updated before that happens.</p>
+  </section>
+
+  <section id="clipboard">
+    <h2><span class="num">02</span> Clipboard &amp; templates</h2>
+    <p>Clips and templates you manually save are encrypted with a key held in your device's Android Keystore (AES-GCM) and stored only in the app's private storage. We cannot read them, and they never leave your device. Quietype does not passively monitor your system clipboard — it only saves text you explicitly choose to save.</p>
+  </section>
+
+  <section id="bubble">
+    <h2><span class="num">03</span> The floating bubble &amp; Accessibility permission</h2>
+    <p>The optional floating bubble lets you rewrite text in any app without switching keyboards. To do that, Android requires an Accessibility Service permission — it's the only API that can read and replace text in another app's field.</p>
+    <ul>
+      <li>It reads the text field you're in only at the moment you tap Rewrite — never continuously, never in the background.</li>
+      <li>It does not read notifications, other apps' screens, or anything outside the one field you asked it to rewrite.</li>
+      <li>Nothing it reads is stored or transmitted; it's held in memory only long enough to run the on-device rewrite and write the result back.</li>
+    </ul>
+    <p>You can revoke this permission at any time in Android Settings → Accessibility.</p>
+  </section>
+
+  <section id="stickers">
+    <h2><span class="num">04</span> Emoji &amp; stickers</h2>
+    <p>Emoji come from your phone's own built-in font. Stickers are a small set of images bundled inside the app (Twemoji, © Twitter/jdecked, licensed CC-BY 4.0) — sending one works like sending any picture from your keyboard, delivered to the app you're chatting in. No sticker use is logged or reported to us.</p>
+  </section>
+
+  <section id="models">
+    <h2><span class="num">05</span> Downloading rewrite models</h2>
+    <p>The on-device rewrite models ("Low" and "High" quality) are downloaded once, on request, over a plain HTTPS connection to our file hosting. This download contains no information about you — it's the same file for every user — and afterward the model runs fully offline.</p>
+  </section>
+
+  <section id="subscription">
+    <h2><span class="num">06</span> Subscriptions &amp; payment</h2>
+    <p>Subscriptions are billed entirely through Google Play. We never see or store your payment details — Google handles that. Our server receives only a purchase token from Google Play, used solely to confirm your subscription is active; it is not linked to your name, email, or any text you rewrite.</p>
+  </section>
+
+  <section id="retention">
+    <h2><span class="num">07</span> What's stored, and for how long</h2>
+    <ul>
+      <li><strong>On your device:</strong> app settings, saved clips/templates (encrypted), downloaded models, subscription status. Deleted immediately if you uninstall the app.</li>
+      <li><strong>On our server:</strong> a subscription status record tied to your purchase token — no rewritten text, ever. Removed when your subscription ends and its record is no longer needed.</li>
+    </ul>
+  </section>
+
+  <section id="deletion">
+    <h2><span class="num">08</span> Account &amp; data deletion</h2>
+    <p>Quietype has no accounts, no sign-up, and no user profile of any kind — there's nothing to "delete" beyond what's already only on your device. Uninstalling the app removes every setting, clip, template, and downloaded model immediately.</p>
+    <p>The one thing that outlives an uninstall is the subscription status record described above, keyed to your Google Play purchase token rather than to you personally. To have that record removed on request, email us at the address below.</p>
+  </section>
+
+  <section id="sharing">
+    <h2><span class="num">09</span> Sharing with third parties</h2>
+    <p>We do not sell or share your data. We do not use analytics or advertising SDKs. The only outside services this app talks to are Google Play (for billing) and our file hosting (for the one-time model download) — neither receives your rewritten text.</p>
+  </section>
+
+  <section id="children">
+    <h2><span class="num">10</span> Children's privacy</h2>
+    <p>Quietype is not directed at children under 13, and we do not knowingly collect data from them.</p>
+  </section>
+
+  <section id="changes">
+    <h2><span class="num">11</span> Changes to this policy</h2>
+    <p>If this policy changes in a way that matters — for example, if the planned cloud-rewrite option ships — we'll update the effective date above and, where the change is material, note it inside the app.</p>
+  </section>
+
+  <div class="contact" id="contact">
+    <h2><span class="num">12</span> Contact</h2>
+    <p>Questions about this policy or your data: <span class="mono">vijaydmb@gmail.com</span></p>
+  </div>
+
+  <footer class="bottom">
+    <span>Quietype Privacy Policy</span>
+    <span class="mono">v1.0 · 2026-09-16</span>
+  </footer>
+</div>

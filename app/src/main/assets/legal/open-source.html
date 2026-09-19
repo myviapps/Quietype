@@ -1,0 +1,106 @@
+<title>Quietype Open Source</title>
+<meta name="description" content="Third-party software and models bundled inside the Quietype keyboard, and their licenses.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root {
+    --bg: #f7f5fc;
+    --surface: #ffffff;
+    --ink: #1c1230;
+    --muted: #6b6480;
+    --line: #e8e4f3;
+    --accent: #6c4bf6;
+    --accent-soft: #ece7ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #120b22; --surface: #1e1533; --ink: #f2eeff; --muted: #a79ec4;
+      --line: #2e2447; --accent: #8f76ff; --accent-soft: #2a2050;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #120b22; --surface: #1e1533; --ink: #f2eeff; --muted: #a79ec4;
+    --line: #2e2447; --accent: #8f76ff; --accent-soft: #2a2050;
+  }
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.65; padding-inline: 20px;
+  }
+  h1, h2 { font-family: "Fraunces", ui-serif, Georgia, serif; text-wrap: balance; color: var(--ink); }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+  a { color: var(--accent); }
+  .page { max-width: 680px; margin-inline: auto; padding-block: 40px 64px; }
+  header.top {
+    display: flex; flex-direction: column; gap: 6px;
+    padding-bottom: 28px; margin-bottom: 32px; border-bottom: 1px solid var(--line);
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.72rem;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+  }
+  header.top h1 { font-size: clamp(1.7rem, 4vw, 2.1rem); font-weight: 600; margin: 2px 0 0; }
+  .meta { color: var(--muted); font-size: 0.85rem; }
+
+  .lib {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 18px 20px; margin-bottom: 16px;
+  }
+  .lib .row1 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .lib .name { font-weight: 600; font-size: 1.05rem; }
+  .lib .license {
+    font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.75rem;
+    color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 6px;
+  }
+  .lib p { margin: 8px 0 0; color: var(--muted); font-size: 0.92rem; max-width: 60ch; }
+  .lib .src { font-size: 0.82rem; margin-top: 6px; }
+
+  footer.bottom {
+    margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line);
+    color: var(--muted); font-size: 0.8rem; display: flex;
+    justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+</style>
+
+<div class="page">
+  <header class="top">
+    <span class="eyebrow">Quietype · Open Source</span>
+    <h1>What's bundled inside, and its licenses.</h1>
+    <p class="meta">Rewrite models and code that ship inside the app, with attribution where their license requires it.</p>
+  </header>
+
+  <div class="lib">
+    <div class="row1"><span class="name">Twemoji</span><span class="license mono">CC-BY 4.0</span></div>
+    <p>Sticker artwork bundled in the keyboard's Stickers panel. © Twitter, Inc and other contributors, maintained by jdecked. Its license requires this name stay credited.</p>
+    <p class="src"><a href="https://github.com/jdecked/twemoji">View source →</a> · <a href="https://creativecommons.org/licenses/by/4.0/">View license →</a></p>
+  </div>
+
+  <div class="lib">
+    <div class="row1"><span class="name">On-device inference engine</span><span class="license mono">MIT</span></div>
+    <p>Runs the on-device rewrite models directly on your phone's CPU — the reason nothing needs to be sent to a server to rewrite text.</p>
+    <p class="src"><a href="https://github.com/ggml-org/llama.cpp">View source →</a></p>
+  </div>
+
+  <div class="lib">
+    <div class="row1"><span class="name">Low quality rewrite model</span><span class="license mono">Apache 2.0</span></div>
+    <p>Downloaded on request, then runs fully offline.</p>
+    <p class="src"><a href="https://huggingface.co/bartowski/SmolLM2-360M-Instruct-GGUF">View source →</a></p>
+  </div>
+
+  <div class="lib">
+    <div class="row1"><span class="name">High quality rewrite model</span><span class="license mono">Llama 3.2 Community License</span></div>
+    <p>Built with Llama. Downloaded on request, then runs fully offline.</p>
+    <p class="src"><a href="https://huggingface.co/bartowski/Llama-3.2-1B-Instruct-GGUF">View source →</a> · <a href="https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/LICENSE">View license →</a></p>
+  </div>
+
+  <div class="lib">
+    <div class="row1"><span class="name">Android platform libraries</span><span class="license mono">Apache 2.0</span></div>
+    <p>Standard Android support libraries, used for subscription billing and small platform utilities.</p>
+    <p class="src"><a href="https://developer.android.com/jetpack/androidx">View source →</a></p>
+  </div>
+
+  <footer class="bottom">
+    <span>Quietype Open Source Attributions</span>
+    <span class="mono">v1.0 · 2026-09-16</span>
+  </footer>
+</div>
