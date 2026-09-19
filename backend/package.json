@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
+    "sync-legal": "node -e \"require('fs').cpSync('../docs/legal','public/legal',{recursive:true})\"",
     "test": "node test/rewrite.test.js"
   },
   "engines": {

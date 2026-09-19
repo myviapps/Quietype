@@ -1,9 +1,16 @@
 import crypto from 'node:crypto';
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const MAX_SESSIONS = 10_000;
 const PACKAGE_NAME = process.env.PLAY_PACKAGE_NAME || 'com.humanrewrite.keyboard';
-const sessions = new Map();
+
+// Sessions are stateless: the token is `payload.signature`, where the payload carries the subscription
+// expiry and the signature is an HMAC with SESSION_SECRET. Nothing is stored server-side, so it works
+// on serverless hosts (Vercel) where memory doesn't survive between requests.
+const SESSION_SECRET = process.env.SESSION_SECRET || (process.env.NODE_ENV === 'production' ? '' : crypto.randomBytes(32).toString('hex'));
+
+function sign(payload) {
+  return crypto.createHmac('sha256', SESSION_SECRET).update(payload).digest('base64url');
+}
 
 // Test tokens ("test_active...") are only honoured when ALLOW_DEV_TOKENS=1 is set explicitly and
 // NODE_ENV is not production. Default is closed, so a deploy that forgets an env var can't hand
@@ -113,38 +120,38 @@ async function getServiceAccountToken(scope = 'https://www.googleapis.com/auth/a
 }
 
 function createSession(validUntilMillis) {
+  if (!SESSION_SECRET) throw new Error('session_secret_not_configured');
   const now = Date.now();
-  pruneSessions(now);
-  const sessionToken = crypto.randomBytes(32).toString('base64url');
-  const entitlement = {
+  const payload = Buffer.from(JSON.stringify({ v: validUntilMillis, n: crypto.randomBytes(8).toString('hex') })).toString('base64url');
+  return entitlementFor(`${payload}.${sign(payload)}`, validUntilMillis, now);
+}
+
+function entitlementFor(sessionToken, validUntilMillis, now) {
+  return {
     status: 'ACTIVE',
     validUntilMillis,
     lastVerifiedAtMillis: now,
     offlineExpiresAtMillis: Math.min(validUntilMillis, now + DAY_MS),
     sessionToken
   };
-  sessions.set(sessionToken, entitlement);
-  return entitlement;
-}
-
-// Sessions live in memory: drop expired ones, and evict the oldest if a flood fills the map.
-function pruneSessions(now) {
-  for (const [token, entitlement] of sessions) {
-    if (now > entitlement.validUntilMillis) sessions.delete(token);
-  }
-  while (sessions.size >= MAX_SESSIONS) sessions.delete(sessions.keys().next().value);
 }
 
 export function currentEntitlement(sessionToken) {
-  const entitlement = sessions.get(sessionToken);
-  if (!entitlement) return expiredEntitlement();
+  if (!SESSION_SECRET || typeof sessionToken !== 'string') return expiredEntitlement();
+  const [payload, signature, ...extra] = sessionToken.split('.');
+  if (!payload || !signature || extra.length) return expiredEntitlement();
+  const expected = Buffer.from(sign(payload));
+  const given = Buffer.from(signature);
+  if (expected.length !== given.length || !crypto.timingSafeEqual(expected, given)) return expiredEntitlement();
+  let validUntilMillis;
+  try {
+    validUntilMillis = JSON.parse(Buffer.from(payload, 'base64url').toString('utf8')).v;
+  } catch {
+    return expiredEntitlement();
+  }
   const now = Date.now();
-  if (now > entitlement.validUntilMillis) return expiredEntitlement();
-  return {
-    ...entitlement,
-    lastVerifiedAtMillis: now,
-    offlineExpiresAtMillis: Math.min(entitlement.validUntilMillis, now + DAY_MS)
-  };
+  if (!Number.isFinite(validUntilMillis) || now > validUntilMillis) return expiredEntitlement();
+  return entitlementFor(sessionToken, validUntilMillis, now);
 }
 
 export function requireActiveSession(authHeader) {
